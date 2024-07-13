@@ -1,0 +1,18 @@
+<header>
+    <section>
+        <img src="../../../assets/Infrrd-Logo.png" alt="Logo" class="logo">
+        <div class="header-right">
+            <div class="notif-layout">
+                <i class="bi bi-bell notif-icon"></i>
+                <span class="notif-count">23</span>
+            </div>
+            <div class="select-layout">
+                <i class="bi bi-people-fill people-icon"></i>
+                <select class="form-select">
+                    <option value="">Choose Team</option>
+                    <option *ngFor="let item of teamList" value="item">{{item}}</option>
+                </select>
+            </div>
+        </div>
+    </section>
+</header>

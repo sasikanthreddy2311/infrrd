@@ -1,1 +1,10 @@
-<p>navbar works!</p>
+<nav class="nav">
+    <ul class="nav-list">
+        <li *ngFor="let item of navList">
+            <a [routerLink]="item.name" class="nav-link">
+                <i class="{{ item.iconClass }} nav-icon"></i>
+                <span class="nav-text">{{ item.name }}</span>
+            </a>
+        </li>
+    </ul>
+</nav>

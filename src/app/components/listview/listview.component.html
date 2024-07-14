@@ -1,3 +1,55 @@
+<div class="top-layout">
+    <div class="count">{{userList.length}} Results Found</div>
+    <button type="button" class="create-btn">Create User</button>
+</div>
+
 <div class="list-layout">
-    list lauout
+    <div *ngFor="let user of userList" class="user-card">
+        <div class="card-header">
+            <div class="icon-name-section">
+                <img [src]="imageMap[user.image]" alt="user.image" class="user-image" />
+                <div>
+                    <div class="user-name">{{user.name}}</div>
+                    <div class="designation">{{user.designation}}</div>
+                </div>
+            </div>
+            <i class="bi bi-send"></i>
+        </div>
+        <div class="rating-section">
+            <div>{{user.rating}} Rating</div>
+            <div [innerHTML]="getStarByRating(user.rating)" class="star-rating"></div>
+        </div>
+        <div class="data-section">
+            <div>
+                <label>Experience:</label>
+                <span>{{user.experience}}</span>
+            </div>
+            <div>
+                <label>Date of Joining:</label>
+                <span>{{user.doj}}</span>
+            </div>
+        </div>
+        <div class="data-section">
+            <div>
+                <label>Current Team:</label>
+                <span>{{user.team}}</span>
+            </div>
+        </div>
+        <div class="data-section">
+            <div>
+                <label>Reporting Manager:</label>
+                <span>{{user.reporting}}</span>
+            </div>
+        </div>
+        <div class="data-section">
+            <div>
+                <i class="bi bi-telephone-fill mobile"></i>
+                <span>{{user.mobile}}</span>
+            </div>
+            <div>
+                <i class="bi bi-envelope-fill email"></i>
+                <span>{{user.email}}</span>
+            </div>
+        </div>
+    </div>
 </div>

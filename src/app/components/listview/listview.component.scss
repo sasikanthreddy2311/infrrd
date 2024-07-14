@@ -1,8 +1,135 @@
 :host {
-    width: 70%;
+    width: 100%;
     height: 88vh;
+    overflow: auto;
 }
+
+.top-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 10px;
+
+    .count {
+        color: #6a6f75;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    
+    .create-btn {
+        padding: 10px 40px;
+        background: white;
+        outline: none;
+        border: 2px solid #49a677;
+        border-radius: 3px;
+        color: #49a677;
+    }
+}
+
+
 
 .list-layout {
     background-color: #f8fcfb;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    row-gap: 20px;
+    padding: 1%;
+    justify-content: space-between;
+}
+
+.user-card {
+    width: 23%;
+    border: 1px solid #cacaca;
+
+    .user-image {
+        width: 60px;
+    }
+    
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px;
+
+        .icon-name-section {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            .user-name {
+                color: #485a68;
+                font-weight: bold;
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .designation {
+                color: gray;
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+
+        i {
+            color: #485a68;
+            padding: 10px;
+            border-radius: 30px;
+            padding: 6px 8px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 10px;
+        }
+    }
+
+    .rating-section {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 15px 10px;
+        color: #a3a0a0;
+        font-size: 12px;
+        border-bottom: 1px solid lightgray;
+        
+        .star-rating {
+            color: #f2b341;
+            display: flex;
+            gap: 5px;
+        }
+    }
+
+    .data-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 10px;
+        font-size: 12px;
+        border-bottom: 1px solid lightgray;
+
+        label {
+            color: #a3a0a0;
+            padding-right: 5px;
+        }
+
+        span {
+            color: #485a68;
+            font-weight: bold;
+        }
+
+        i.mobile {
+            color: #305fad;
+            border-radius: 30px;
+            padding: 6px 8px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 10px;
+            margin-right: 3px;
+        }
+
+        i.email {
+            color: #c84639;
+            border-radius: 30px;
+            padding: 6px 8px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 10px;
+            margin-right: 3px;
+        }
+    }
 }

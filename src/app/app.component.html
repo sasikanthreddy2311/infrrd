@@ -2,7 +2,7 @@
   <app-header></app-header>
 </div>
 <div class="content-section">
-  <app-navbar></app-navbar>
-  <!-- <app-searchbar></app-searchbar> -->
-  <app-listview></app-listview>
+  <app-navbar (onSearchLayoutClick)="showSerchLayout()"></app-navbar>
+  <app-searchbar *ngIf="showSearchBlock"></app-searchbar>
+  <app-listview [showSearchBlock]="showSearchBlock"></app-listview>
 </div>

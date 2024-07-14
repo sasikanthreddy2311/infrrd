@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserlistService } from '../../services/userlist.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -12,6 +12,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class ListviewComponent {
   constructor(private userlistService: UserlistService) {}
+  @Input() showSearchBlock: any = ''
   userList: any[] = []
   imageMap: any = {}
   starFill: any = '<i class="bi bi-star-fill"></i>'

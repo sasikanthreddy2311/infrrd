@@ -34,19 +34,20 @@
     justify-content: space-between;
     padding: 10px 20px;
     margin-top: auto;
+    gap: 10px;
 
     .clear-btn {
-        padding: 10px 40px;
+        padding: 10px 35px;
         background: white;
         outline: none;
         border: 2px solid #49a677;
         border-radius: 3px;
         color: #49a677;
     }
-    
+
     
     .submit-btn {
-        padding: 10px 40px;
+        padding: 10px 35px;
         background: #49a677;
         outline: none;
         border: 2px solid #49a677;

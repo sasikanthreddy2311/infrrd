@@ -1,9 +1,25 @@
 <nav class="nav">
     <ul class="nav-list">
-        <li *ngFor="let item of navList">
-            <a [routerLink]="item.name" class="nav-link">
+        <li *ngFor="let item of navList" (click)="onLinkClick(item.name)">
+            <a class="nav-link">
                 <i class="{{ item.iconClass }} nav-icon"></i>
                 <span class="nav-text">{{ item.name }}</span>
+                <span *ngIf="item.name === 'Messages'" class="msg-count">99+</span>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="nav-list mt-auto">
+        <li>
+            <a class="nav-link">
+                <i class="bi bi-chat nav-icon"></i>
+                <span class="nav-text">Get Help</span>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span class="nav-text">Sign Out</span>
             </a>
         </li>
     </ul>

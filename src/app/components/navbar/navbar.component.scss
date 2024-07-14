@@ -6,6 +6,8 @@
 .nav {
     display: flex;
     padding-top: 20px;
+    flex-direction: column;
+    height: 96%;
 }
 
 .nav-list {
@@ -16,6 +18,11 @@
     padding: 0;
     width: 100%;
     gap: 10px;
+    cursor: pointer;
+}
+
+.mt-auto {
+    margin-top: auto;
 }
 
 .nav-link {
@@ -40,4 +47,12 @@
 .nav-text {
     font-size: 16px;
     color: #49a677;
+}
+
+.msg-count {
+    font-size: 10px;
+    margin-top: 5px;
+    background: #dd634b;
+    padding: 2px;
+    color: white;
 }

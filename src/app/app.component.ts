@@ -16,8 +16,14 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'infrrd_task';
   showSearchBlock: boolean = false
+  searchedData: any
 
   showSerchLayout() {
     this.showSearchBlock = !this.showSearchBlock
+  }
+
+  searchData(event: any) {
+    console.log(event)
+    this.searchedData = event
   }
 }

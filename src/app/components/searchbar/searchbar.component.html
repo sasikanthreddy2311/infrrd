@@ -28,7 +28,7 @@
             <label for="experience" class="form-label">Experience</label>
             <select class="form-select" formControlName="experience">
                 <option value="">All</option>
-                <option *ngFor="let experience of experienceList" [value]="experience">{{ experience }}</option>
+                <option *ngFor="let experience of experienceList" [value]="experience.value">{{ experience.name }}</option>
             </select>
         </div>
     
@@ -50,7 +50,7 @@
     </div>
 
     <div class="btn-layout">
-        <button type="button" class="clear-btn">Clear</button>
+        <button type="button" class="clear-btn" (click)="clearForm()">Clear</button>
         <button type="submit" class="submit-btn">Submit</button>
     </div>
 </form>

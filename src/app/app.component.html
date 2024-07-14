@@ -3,6 +3,6 @@
 </div>
 <div class="content-section">
   <app-navbar (onSearchLayoutClick)="showSerchLayout()"></app-navbar>
-  <app-searchbar *ngIf="showSearchBlock"></app-searchbar>
-  <app-listview [showSearchBlock]="showSearchBlock"></app-listview>
+  <app-searchbar *ngIf="showSearchBlock" (onSearchSubmit)="searchData($event)"></app-searchbar>
+  <app-listview [showSearchBlock]="showSearchBlock" [searchedData]="searchedData"></app-listview>
 </div>

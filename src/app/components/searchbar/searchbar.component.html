@@ -4,7 +4,7 @@
             <label for="department" class="form-label">Department</label>
             <select class="form-select" formControlName="department">
                 <option value="">All Departments</option>
-                <option *ngFor="let dept of departmentList" [value]="dept">{{ dept }}</option>
+                <option *ngFor="let dept of keyMapList['departmentList']" [value]="dept">{{ dept }}</option>
             </select>
         </div>
     
@@ -12,7 +12,7 @@
             <label for="roleType" class="form-label">Role Type</label>
             <select class="form-select" formControlName="roleType">
                 <option value="">All Roles</option>
-                <option *ngFor="let role of roleTypeList" [value]="role">{{ role }}</option>
+                <option *ngFor="let role of keyMapList['roleTypeList']" [value]="role">{{ role }}</option>
             </select>
         </div>
     
@@ -20,7 +20,7 @@
             <label for="designation" class="form-label">Designation</label>
             <select class="form-select" formControlName="designation">
                 <option value="">All</option>
-                <option *ngFor="let designation of designationList" [value]="designation">{{ designation }}</option>
+                <option *ngFor="let designation of keyMapList['designationList']" [value]="designation">{{ designation }}</option>
             </select>
         </div>
     
@@ -28,7 +28,7 @@
             <label for="experience" class="form-label">Experience</label>
             <select class="form-select" formControlName="experience">
                 <option value="">All</option>
-                <option *ngFor="let experience of experienceList" [value]="experience.value">{{ experience.name }}</option>
+                <option *ngFor="let experience of keyMapList['experienceList']" [value]="experience.value">{{ experience.name }}</option>
             </select>
         </div>
     
@@ -36,7 +36,7 @@
             <label for="location" class="form-label">Location</label>
             <select class="form-select" formControlName="location">
                 <option value="">All</option>
-                <option *ngFor="let location of locationList" [value]="location">{{ location }}</option>
+                <option *ngFor="let location of keyMapList['locationList']" [value]="location">{{ location }}</option>
             </select>
         </div>
     
@@ -44,7 +44,7 @@
             <label for="team" class="form-label">Team</label>
             <select class="form-select" formControlName="team">
                 <option value="">All</option>
-                <option *ngFor="let team of teamList" [value]="team">{{ team }}</option>
+                <option *ngFor="let team of keyMapList['teamList']" [value]="team">{{ team }}</option>
             </select>
         </div>
     </div>

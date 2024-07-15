@@ -2,11 +2,12 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { UserlistService } from '../../services/userlist.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { CreateuserComponent } from '../createuser/createuser.component';
 
 @Component({
   selector: 'app-listview',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CreateuserComponent],
   templateUrl: './listview.component.html',
   styleUrl: './listview.component.scss'
 })
@@ -20,6 +21,8 @@ export class ListviewComponent {
   starHalf: any = '<i class="bi bi-star-half"></i>'
   starEmpty: any = '<i class="bi bi-star"></i>'
   filteredList: any[] = []
+  showCreateBlock: boolean = false;
+  maxSize: number = 15;
 
   ngOnInit(): void {
     this.userList = this.userlistService.getUserList()
@@ -58,6 +61,51 @@ export class ListviewComponent {
     sanitizedHtml = stars;
     
     return sanitizedHtml;
+  }
+
+  showCreateLayout() {
+    this.showCreateBlock = true;
+  }
+
+  closeModal() {
+    this.showCreateBlock = false;
+  }
+
+  createNewUser(event: any) {
+    console.log(event)
+    this.userList.push({ ...event })
+    console.log(this.userList)
+    this.filteredList = this.userList
+  }
+
+  truncateEmail(email: string) {
+    if (email.length <= this.maxSize) {
+      return email;
+    } else {
+      const truncatedEmail = email.substring(0, this.maxSize) + '...';
+      return truncatedEmail;
+    }
+  }
+
+  showConfirmationModal(user: any, index: number) {
+    this.userList.forEach(user => {
+      user.showConfirmation = false
+    })
+    user.showConfirmation = true
+    this.userList[index] = user
+    this.filteredList = this.userList
+  }
+
+  onYes(index: number) {
+    this.userList.splice(index, 1)
+    this.filteredList = this.userList
+  }
+
+  onNo() {
+    this.userList.forEach(user => {
+      user.showConfirmation = false
+    })
+    this.filteredList = this.userList
   }
 
 }

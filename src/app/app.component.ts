@@ -25,5 +25,8 @@ export class AppComponent {
   searchData(event: any) {
     console.log(event)
     this.searchedData = event
+    if (this.searchedData?.isClear) {
+      this.showSearchBlock = false
+    }
   }
 }

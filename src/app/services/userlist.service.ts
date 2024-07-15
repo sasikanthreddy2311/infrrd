@@ -48,7 +48,32 @@ export class UserlistService {
       woman: '../../assets/woman.png',
       woman1: '../../assets/woman1.png',
       woman2: '../../assets/woman2.png',
-      gamer: '../../assets/gamer.png'
+      gamer: '../../assets/gamer.png',
+      bussiness: '../../assets/bussiness-man.png',
+      man2: '../../assets/man2.png'
+    }
+  }
+
+  userKeyMapList() {
+    return {
+      departmentList: ['Front End Development', 'Back End Development', 'Quality Assurance', 'Operations', 'Project Management', 'Human Resources'],
+      roleTypeList: ['Full Time', 'Part Time', 'Contract'],
+      designationList: ['Fresher', 'Junior Developer', 'Senior Developer', 'Manager'],
+      experienceList: [{
+        name: '3 Years above',
+        value: '3'
+      }, {
+        name: '5 Years above',
+        value: '5'
+      }, {
+        name: '7 Years above',
+        value: '7'
+      }, {
+        name: '10 Years above',
+        value: '10'
+      }],
+      locationList: ['Bangalore', 'Hyderabad', 'Chennai', 'Mumbai'],
+      teamList: ['OCBC Singapore', 'IND India', 'EMEA Germany']
     }
   }
 }

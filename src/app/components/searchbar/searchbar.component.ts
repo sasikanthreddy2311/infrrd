@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; // Import this
+import { UserlistService } from '../../services/userlist.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -13,14 +14,9 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import this
 export class SearchbarComponent {
   @Output() onSearchSubmit: EventEmitter<any> = new EventEmitter();
   filterForm: FormGroup;
-  departmentList: string[] = []
-  roleTypeList: string[] = []
-  designationList: string[] = []
-  experienceList: any[] = []
-  locationList: string[] = []
-  teamList: string[] = []
+  keyMapList: any = {}
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private userlistService: UserlistService) { 
     this.filterForm = this.fb.group({
       department: [''],
       roleType: [''],
@@ -32,24 +28,7 @@ export class SearchbarComponent {
   }
 
   ngOnInit() {
-    this.departmentList = ['Front End Development', 'Back End Development', 'Quality Assurance', 'Operations', 'Project Management', 'Human Resources'];
-    this.roleTypeList = ['Full Time', 'Part Time', 'Contract']
-    this.designationList = ['Fresher', 'Junior Developer', 'Senior Developer', 'Manager']
-    this.experienceList = [{
-      name: '3 Years above',
-      value: '3'
-    }, {
-      name: '5 Years above',
-      value: '5'
-    }, {
-      name: '7 Years above',
-      value: '7'
-    }, {
-      name: '10 Years above',
-      value: '10'
-    }]
-    this.locationList = ['Bangalore', 'Hyderabad', 'Chennai', 'Mumbai']
-    this.teamList = ['OCBC Singapore', 'IND India', 'EMEA Germany']
+    this.keyMapList = this.userlistService.userKeyMapList()
   }
 
   onSubmit() {
@@ -59,6 +38,7 @@ export class SearchbarComponent {
 
   clearForm() {
     this.filterForm.reset()
+    this.filterForm.value.isClear = true
     this.onSearchSubmit.emit(this.filterForm.value)
   }
 

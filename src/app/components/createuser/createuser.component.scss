@@ -1,0 +1,131 @@
+:host {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 30%;
+    height: 100%;
+    background: white;
+    border: 1px solid lightgray;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    background: #49a677;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+
+    i {
+        font-size: 10px;
+        font-weight: bold;
+        border: 1px solid white;
+        padding: 4px 6px;
+        border-radius: 30px;
+        cursor: pointer;
+    }
+}
+
+.user-form {
+    padding: 10px;
+    background: whitesmoke;
+
+    label {
+        color: #7f8e95;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .radio-icons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        overflow-x: auto;
+
+        label {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            .user-icon {
+                width: 40px;
+            }
+        }
+    }
+
+    .form-group {
+        display: flex;
+        padding-top: 15px;
+
+        label {
+            width: 50%;
+            padding-top: 5px;
+        }
+
+        div {
+            width: 100%;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #e8e8e8;
+            outline: none;
+        }
+
+        input {
+            width: 96%;
+            padding: 5px;
+            border: 1px solid #e8e8e8;
+            outline: none;
+        }
+
+        .validation {
+            color: red;
+            font-size: 10px;
+        }
+    }
+
+    .create-btn {
+        width: 100%;
+        margin: 20px 0px;
+        padding: 10px 40px;
+        background: white;
+        outline: none;
+        border: 2px solid #49a677;
+        border-radius: 3px;
+        color: #49a677;
+        cursor: pointer;
+    }
+
+    .create-btn:disabled {
+        color: gray;
+        border: 2px solid gray;
+        opacity: 0.4;
+    }
+
+    .showMsg {
+        color: #49a677;
+        font-size: 14px;
+        text-align: center;
+        padding: 10px 0px;
+    }
+}
+
+::-webkit-scrollbar {
+    scrollbar-width: thin;
+    height: 5px;
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #a3a0a0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #49a677;
+    border-radius: 5px;
+}

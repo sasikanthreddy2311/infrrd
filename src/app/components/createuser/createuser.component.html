@@ -1,0 +1,172 @@
+<div class="header">
+    <div>Create User</div>
+    <i class="bi bi-x-lg" (click)="closeModal()"></i>
+</div>
+
+<form class="user-form" [formGroup]="userForm" (ngSubmit)="onUserSubmit()">
+    <label>Select User Icon:</label>
+    <div class="radio-icons">
+        <div *ngFor="let image of imageMap | keyvalue">
+            <label>
+                <img [src]="image.value" alt="image" class="user-icon" />
+                <input type="radio" name="image" [value]="image.key" formControlName="image">
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <div>
+            <input id="name" formControlName="name">
+            <div *ngIf="userForm?.get('name')?.touched && userForm?.get('name')?.invalid" class="validation">
+                Enter name in alphabets.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="rating">Rating</label>
+        <div>
+            <select id="rating" formControlName="rating">
+                <option *ngFor="let value of ratingValues" [value]="value">
+                    {{ value }}
+                </option>
+            </select>
+            <div *ngIf="userForm?.get('rating')?.touched && userForm?.get('rating')?.invalid" class="validation">
+                Rating is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="doj">Date of Joining</label>
+        <div>
+            <select id="doj" formControlName="doj">
+                <option *ngFor="let year of getYearValues()" [value]="year">
+                    {{ year }}
+                </option>
+            </select>
+            <div *ngIf="userForm?.get('doj')?.touched && userForm?.get('doj')?.invalid" class="validation">
+                DOJ is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="reporting">Reporting To</label>
+        <div>
+            <input id="reporting" formControlName="reporting">
+            <div *ngIf="userForm?.get('reporting')?.touched && userForm?.get('reporting')?.invalid" class="validation">
+                Reporting is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <div>
+            <input id="mobile" formControlName="mobile">
+            <div *ngIf="userForm?.get('mobile')?.touched && userForm?.get('mobile')?.invalid" class="validation">
+                Mobile is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <div>
+            <input id="email" formControlName="email">
+            <div *ngIf="userForm?.get('email')?.touched && userForm?.get('email')?.invalid" class="validation">
+                Email is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="department">Department</label>
+        <div>
+            <select id="department" formControlName="department">
+                <option  *ngFor="let dept of keyMapList['departmentList']" [value]="dept">
+                    {{ dept }}
+                </option>
+            </select>
+            <div *ngIf="userForm?.get('department')?.touched && userForm?.get('department')?.invalid" class="validation">
+                Department is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="roleType">Role Type</label>
+        <div>
+            <select id="roleType" formControlName="roleType">
+                <option  *ngFor="let role of keyMapList['roleTypeList']" [value]="role">
+                    {{ role }}
+                </option>
+            </select>
+            <div *ngIf="userForm?.get('roleType')?.touched && userForm?.get('roleType')?.invalid" class="validation">
+                Role type is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="designation">Designation</label>
+        <div>
+            <select id="designation" formControlName="designation">
+                <option  *ngFor="let design of keyMapList['designationList']" [value]="design">
+                    {{ design }}
+                </option>
+            </select>
+            <div *ngIf="userForm?.get('designation')?.touched && userForm?.get('designation')?.invalid" class="validation">
+                Designation is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="experience">Experience</label>
+        <div>
+            <select id="experience" formControlName="experience">
+                <option  *ngFor="let exper of keyMapList['experienceList']" [value]="exper.value">
+                    {{ exper.name }}
+                </option>
+            </select>
+            <div *ngIf="userForm?.get('experience')?.touched && userForm?.get('experience')?.invalid" class="validation">
+                Experience is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="location">Location</label>
+        <div>
+            <select id="location" formControlName="location">
+                <option  *ngFor="let loctn of keyMapList['locationList']" [value]="loctn">
+                    {{ loctn }}
+                </option>
+            </select>
+            <div *ngIf="userForm?.get('location')?.touched && userForm?.get('location')?.invalid" class="validation">
+                Location is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="team">Team</label>
+        <div>
+            <select id="team" formControlName="team">
+                <option  *ngFor="let tem of keyMapList['teamList']" [value]="tem">
+                    {{ tem }}
+                </option>
+            </select>
+            <div *ngIf="userForm?.get('team')?.touched && userForm?.get('team')?.invalid" class="validation">
+                Team is required.
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="showMsg" class="showMsg">{{'User created successfully.'}}</div>
+
+    <button type="submit" class="create-btn" [disabled]="userForm.invalid">Create User</button>
+</form>

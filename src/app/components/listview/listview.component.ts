@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { UserlistService } from '../../services/userlist.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -23,6 +23,7 @@ export class ListviewComponent {
   filteredList: any[] = []
   showCreateBlock: boolean = false;
   maxSize: number = 15;
+  editUserData: any
 
   ngOnInit(): void {
     this.userList = this.userlistService.getUserList()
@@ -64,10 +65,12 @@ export class ListviewComponent {
   }
 
   showCreateLayout() {
+    this.editUserData = null
     this.showCreateBlock = true;
   }
 
   closeModal() {
+    this.editUserData = null
     this.showCreateBlock = false;
   }
 
@@ -75,6 +78,11 @@ export class ListviewComponent {
     console.log(event)
     this.userList.push({ ...event })
     console.log(this.userList)
+    this.filteredList = this.userList
+  }
+
+  updateUser(event: any) {
+    this.userList[event.id] = event.data
     this.filteredList = this.userList
   }
 
@@ -106,6 +114,12 @@ export class ListviewComponent {
       user.showConfirmation = false
     })
     this.filteredList = this.userList
+  }
+
+  editUser(user: any, index: number) {
+    user.id = index
+    this.editUserData = user
+    this.showCreateBlock = true;
   }
 
 }

@@ -19,6 +19,7 @@
         <div class="rating-section">
             <div>{{user.rating}} Rating</div>
             <div [innerHTML]="getStarByRating(user.rating)" class="star-rating"></div>
+            <div class="edit-icon"><i class="bi bi-pencil-square" (click)="editUser(user, i)"></i></div>
         </div>
         <div class="data-section">
             <div>
@@ -63,4 +64,4 @@
     </div>
 </div>
 
-<app-createuser *ngIf="showCreateBlock" (closeModalEvent)="closeModal()" (createUserEvent)="createNewUser($event)"></app-createuser>
+<app-createuser *ngIf="showCreateBlock" (closeModalEvent)="closeModal()" (createUserEvent)="createNewUser($event)" (updateUserEvent)="updateUser($event)" [editUserData]="editUserData"></app-createuser>

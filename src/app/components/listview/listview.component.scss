@@ -110,6 +110,14 @@
             display: flex;
             gap: 5px;
         }
+
+        .edit-icon {
+            margin-left: auto;
+            cursor: pointer;
+            font-size: 15px;
+            color: #49a677;
+            padding-right: 7px;
+        }
     }
 
     .data-section {

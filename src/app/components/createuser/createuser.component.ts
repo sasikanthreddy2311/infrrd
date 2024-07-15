@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { UserlistService } from '../../services/userlist.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,19 +16,31 @@ export class CreateuserComponent {
 
   @Output() closeModalEvent: EventEmitter<any> = new EventEmitter();
   @Output() createUserEvent: EventEmitter<any> = new EventEmitter();
+  @Output() updateUserEvent: EventEmitter<any> = new EventEmitter();
+  @Input() editUserData: any
   imageMap: any;
   userForm!: FormGroup;
   ratingValues: any[] = [2, 2.5, 3, 3.5, 4, 4.5, 5];
   keyMapList: any = {}
   showMsg: boolean = false
+  showMsgText: string = ''
 
   ngOnInit(): void {
     this.imageMap = this.userlistService.getAllImageList()
     this.keyMapList = this.userlistService.userKeyMapList()
-    this.initilizeForm()
+    if (!this.editUserData) {
+      this.initilizeForm(null)
+    }
   }
 
-  initilizeForm() {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['editUserData'].currentValue) {
+      let data = changes['editUserData'].currentValue
+      this.initilizeForm(data)
+    }
+  }
+
+  initilizeForm(data: any) {
     this.userForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
       rating: ['', [Validators.required]],
@@ -44,6 +56,11 @@ export class CreateuserComponent {
       team: ['', [Validators.required]],
       image: ['', [Validators.required]]
     });
+
+    if (data) {
+      const experience = Math.floor(data.experience)
+      this.userForm.patchValue({ ...data, experience })
+    }
   }
 
   closeModal() {
@@ -51,10 +68,19 @@ export class CreateuserComponent {
   }
 
   onUserSubmit() {
-    console.log(this.userForm.value);
-    this.createUserEvent.emit(this.userForm.value)
-    this.showMsg = true
-    this.resetForm()
+    if (this.editUserData?.id) {
+      this.updateUserEvent.emit({ data: this.userForm.value, id: this.editUserData.id })
+      this.showMsg = true
+      this.showMsgText = 'User updated successfully.'
+      this.resetForm()
+    } else {
+      console.log(this.userForm.value);
+      this.createUserEvent.emit(this.userForm.value)
+      this.showMsg = true
+      this.showMsgText = 'User created successfully.'
+      this.resetForm()
+    }
+  
   }
 
   resetForm() {

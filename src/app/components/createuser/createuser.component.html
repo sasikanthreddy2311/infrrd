@@ -166,7 +166,8 @@
         </div>
     </div>
 
-    <div *ngIf="showMsg" class="showMsg">{{'User created successfully.'}}</div>
+    <div *ngIf="showMsg" class="showMsg">{{showMsgText}}</div>
 
-    <button type="submit" class="create-btn" [disabled]="userForm.invalid">Create User</button>
+    <button *ngIf="!editUserData?.id" type="submit" class="create-btn" [disabled]="userForm.invalid">Create User</button>
+    <button *ngIf="editUserData?.id" type="submit" class="create-btn" [disabled]="userForm.invalid">Update User</button>
 </form>

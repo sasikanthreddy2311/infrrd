@@ -16,7 +16,6 @@ export class HeaderComponent {
 
   ngOnInit(): void {
     this.teamList = this.headerService.getHeaderList()
-    console.log(this.teamList)
   }
 
 }

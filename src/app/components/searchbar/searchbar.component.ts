@@ -32,7 +32,6 @@ export class SearchbarComponent {
   }
 
   onSubmit() {
-    console.log(this.filterForm.value); 
     this.onSearchSubmit.emit(this.filterForm.value)
   }
 

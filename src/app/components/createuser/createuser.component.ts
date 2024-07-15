@@ -74,7 +74,6 @@ export class CreateuserComponent {
       this.showMsgText = 'User updated successfully.'
       this.resetForm()
     } else {
-      console.log(this.userForm.value);
       this.createUserEvent.emit(this.userForm.value)
       this.showMsg = true
       this.showMsgText = 'User created successfully.'

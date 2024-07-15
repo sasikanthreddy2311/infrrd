@@ -28,7 +28,6 @@ export class ListviewComponent {
   ngOnInit(): void {
     this.userList = this.userlistService.getUserList()
     this.imageMap = this.userlistService.getAllImageList()
-    console.log(this.imageMap)
     this.filteredList = this.userList
   }
 
@@ -43,7 +42,6 @@ export class ListviewComponent {
                (!data.roleType || item.roleType === data.roleType) &&
                (!data.team || item.team === data.team)
       });  
-      console.log(this.filteredList)    
     }
   }
 
@@ -75,9 +73,7 @@ export class ListviewComponent {
   }
 
   createNewUser(event: any) {
-    console.log(event)
     this.userList.push({ ...event })
-    console.log(this.userList)
     this.filteredList = this.userList
   }
 

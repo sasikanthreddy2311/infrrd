@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'infrrd_task';
+  title = 'infrrd';
   showSearchBlock: boolean = false
   searchedData: any
 

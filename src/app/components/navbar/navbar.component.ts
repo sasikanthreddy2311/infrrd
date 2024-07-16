@@ -11,6 +11,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class NavbarComponent {
   navList: any = []
   @Output() onSearchLayoutClick: EventEmitter<any> = new EventEmitter();
+  prevLink: string = ''
 
   ngOnInit(): void {
     this.navList = [{
@@ -40,8 +41,11 @@ export class NavbarComponent {
   }
 
   onLinkClick(link: any) {
-    if (link === 'Search') {
-      this.onSearchLayoutClick.emit()
+    if (link === 'Search' || link === 'Filter') {
+      this.onSearchLayoutClick.emit(this.prevLink !== link)
+    } else {
+      this.onSearchLayoutClick.emit(false)
     }
+    this.prevLink = link
   }
 }

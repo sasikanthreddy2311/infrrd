@@ -18,8 +18,12 @@ export class AppComponent {
   showSearchBlock: boolean = false
   searchedData: any
 
-  showSerchLayout() {
-    this.showSearchBlock = !this.showSearchBlock
+  showSerchLayout(event: any) {
+    if (event === true) {
+      this.showSearchBlock = true
+    } else {
+      this.showSearchBlock = event
+    }
   }
 
   searchData(event: any) {
